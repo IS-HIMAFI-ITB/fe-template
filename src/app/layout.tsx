@@ -1,7 +1,9 @@
 import './globals.css'
+import { Toaster } from "@/components/ui/toast/toaster"
 import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/context/theme-provider'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +16,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="id">
+      <body className={font.className}>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
